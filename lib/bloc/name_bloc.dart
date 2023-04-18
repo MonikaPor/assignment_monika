@@ -4,9 +4,12 @@ import 'package:assignment_monika/repository/repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NameBloc extends Bloc<NameEvent, NameState> {
-  final Repository repository = Repository();
+  late final Repository _repository;
 
-  NameBloc() : super(InitialGetNameState()) {
+  NameBloc({
+    Repository? repository,
+  }) : super(InitialGetNameState()) {
+    _repository = repository ?? Repository();
     on<GetNameEvent>((event, emit) => _getNameEventToState(event, emit));
   }
 
@@ -14,7 +17,7 @@ class NameBloc extends Bloc<NameEvent, NameState> {
       GetNameEvent event, Emitter<NameState> emit) async {
     emit(LoadingNameState());
     try {
-      var response = await repository.getName(event.inputName);
+      var response = await _repository.getName(event.inputName);
       if (response.isNotEmpty) {
         emit(SuccessGetNameState(nameList: response));
       } else {

@@ -18,32 +18,37 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Search Name'),
-          backgroundColor: Colors.purple,
-          centerTitle: false,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-          child: Column(
-            children: [
-              const SearchWidget(),
-              Expanded(child:
-                  BlocBuilder<NameBloc, NameState>(builder: (context, state) {
-                if (state is LoadingNameState) {
-                  return const LoadWidget();
-                } else if (state is SuccessGetNameState) {
-                  return SearchListWidget(nameList: state.nameList);
-                } else if (state is EmptyGetNameState) {
-                  return const EmptyStateWidget();
-                } else if (state is ErrorGetNameState) {
-                  return const ErrorStateWidget();
-                }
-                return Container();
-              }))
-            ],
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Search Name'),
+            backgroundColor: Colors.purple,
+            centerTitle: false,
           ),
-        ));
+          body: Padding(
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+            child: Column(
+              children: [
+                const SearchWidget(),
+                Expanded(child:
+                    BlocBuilder<NameBloc, NameState>(builder: (context, state) {
+                  if (state is LoadingNameState) {
+                    return const LoadWidget();
+                  } else if (state is SuccessGetNameState) {
+                    return SearchListWidget(nameList: state.nameList);
+                  } else if (state is EmptyGetNameState) {
+                    return const EmptyStateWidget();
+                  } else if (state is ErrorGetNameState) {
+                    return const ErrorStateWidget();
+                  }
+                  return Container();
+                }))
+              ],
+            ),
+          )),
+    );
   }
 }

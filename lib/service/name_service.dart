@@ -1,13 +1,23 @@
 import 'package:assignment_monika/helpers/service_constants.dart';
+import 'package:assignment_monika/service/api_response.dart';
 import 'package:assignment_monika/model/name_model.dart';
 import 'package:dio/dio.dart';
 
 class NameService {
   final Dio dio = Dio();
 
-  Future<List<NameModel>> getName({required String inputName}) async {
+  Future<ApiResponse<List<NameModel>>> getName(
+      {required String inputName}) async {
     Response response =
         await dio.get('${ServiceConstants().baseUrl}/name/$inputName');
-    return (response.data as List).map((x) => NameModel.fromJson(x)).toList();
+    if (response.statusCode == 200) {
+      return ApiResponse.completed(
+          (response.data as List).map((x) => NameModel.fromJson(x)).toList());
+    } else {
+      return ApiResponse.error(DioError(
+        type: DioErrorType.unknown,
+        requestOptions: RequestOptions(),
+      ));
+    }
   }
 }

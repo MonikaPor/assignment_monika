@@ -1,6 +1,7 @@
 import 'package:assignment_monika/bloc/name_bloc.dart';
 import 'package:assignment_monika/bloc/name_event.dart';
 import 'package:assignment_monika/bloc/name_state.dart';
+import 'package:assignment_monika/service/api_response.dart';
 import 'package:assignment_monika/model/name_model.dart';
 import 'package:assignment_monika/repository/repository.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,7 +26,8 @@ void main() {
       //given
       NameModel nameModel = NameModel(name: "Monika");
       List<NameModel> nameModelList = [nameModel];
-      when(mockRepository.getName(any)).thenAnswer((_) async => nameModelList);
+      when(mockRepository.getName(any))
+          .thenAnswer((_) async => ApiResponse.completed(nameModelList));
 
       //when
       nameBloc.add(GetNameEvent(inputName: ""));
@@ -41,7 +43,8 @@ void main() {
 
     test('Empty Case', () async {
       //given
-      when(mockRepository.getName(any)).thenAnswer((_) async => []);
+      when(mockRepository.getName(any))
+          .thenAnswer((_) async => ApiResponse.completed([]));
 
       //when
       nameBloc.add(GetNameEvent(inputName: ""));

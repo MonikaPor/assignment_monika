@@ -3,10 +3,11 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:assignment_monika/model/name_model.dart' as _i4;
-import 'package:assignment_monika/repository/repository.dart' as _i2;
+import 'package:assignment_monika/service/api_response.dart' as _i2;
+import 'package:assignment_monika/model/name_model.dart' as _i5;
+import 'package:assignment_monika/repository/repository.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -19,21 +20,24 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
+class _FakeApiResponse_0<T> extends _i1.Fake implements _i2.ApiResponse<T> {}
+
 /// A class which mocks [Repository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRepository extends _i1.Mock implements _i2.Repository {
+class MockRepository extends _i1.Mock implements _i3.Repository {
   MockRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.NameModel>> getName(String? inputName) =>
+  _i4.Future<_i2.ApiResponse<List<_i5.NameModel>>> getName(String? inputName) =>
       (super.noSuchMethod(
         Invocation.method(
           #getName,
           [inputName],
         ),
-        returnValue: Future<List<_i4.NameModel>>.value(<_i4.NameModel>[]),
-      ) as _i3.Future<List<_i4.NameModel>>);
+        returnValue: Future<_i2.ApiResponse<List<_i5.NameModel>>>.value(
+            _FakeApiResponse_0<List<_i5.NameModel>>()),
+      ) as _i4.Future<_i2.ApiResponse<List<_i5.NameModel>>>);
 }

@@ -4,7 +4,11 @@ import 'package:assignment_monika/model/name_model.dart';
 import 'package:dio/dio.dart';
 
 class NameService {
-  final Dio dio = Dio();
+  final Dio? mockDio;
+
+  NameService({this.mockDio});
+
+  late Dio dio = mockDio ?? Dio();
 
   Future<ApiResponse<List<NameModel>>> getName(
       {required String inputName}) async {

@@ -1,4 +1,3 @@
-import 'package:assignment_monika/model/name_model.dart';
 import 'package:assignment_monika/service/api_response.dart';
 import 'package:assignment_monika/service/name_service.dart';
 import 'package:dio/dio.dart';

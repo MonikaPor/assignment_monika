@@ -25,6 +25,7 @@ class _SearchListWidgetState extends State<SearchListWidget> {
               widget.nameList[index].name ?? "",
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(fontSize: 16),
+              key: Key("item_index_$index"),
             ),
           );
         });

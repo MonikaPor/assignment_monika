@@ -21,6 +21,7 @@ class _SearchWidgetState extends State<SearchWidget> {
         children: [
           Flexible(
             child: TextField(
+              key: const Key("text_input"),
               controller: _nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -38,6 +39,7 @@ class _SearchWidgetState extends State<SearchWidget> {
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
             child: InkWell(
+              key: const Key("search_btn"),
               onTap: () {
                 FocusManager.instance.primaryFocus?.unfocus();
                 context

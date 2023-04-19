@@ -10,6 +10,7 @@ class LoadWidget extends StatelessWidget {
       padding: EdgeInsets.only(left: 30, right: 30),
       child: Center(
           child: LoadingIndicator(
+        key: Key('loading_indicator'),
         colors: [Colors.purple],
         indicatorType: Indicator.ballClipRotate,
       )),

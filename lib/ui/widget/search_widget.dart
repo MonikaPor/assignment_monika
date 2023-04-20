@@ -29,10 +29,7 @@ class _SearchWidgetState extends State<SearchWidget> {
               ),
               textInputAction: TextInputAction.search,
               onSubmitted: (value) {
-                FocusManager.instance.primaryFocus?.unfocus();
-                context
-                    .read<NameBloc>()
-                    .add(GetNameEvent(inputName: _nameController.text));
+                onSearchTap();
               },
             ),
           ),
@@ -41,10 +38,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             child: InkWell(
               key: const Key("search_btn"),
               onTap: () {
-                FocusManager.instance.primaryFocus?.unfocus();
-                context
-                    .read<NameBloc>()
-                    .add(GetNameEvent(inputName: _nameController.text));
+                onSearchTap();
               },
               child: const Icon(Icons.search, size: 36),
             ),
@@ -52,5 +46,14 @@ class _SearchWidgetState extends State<SearchWidget> {
         ],
       ),
     );
+  }
+
+  onSearchTap() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    if (_nameController.text.isNotEmpty) {
+      context
+          .read<NameBloc>()
+          .add(GetNameEvent(inputName: _nameController.text));
+    }
   }
 }

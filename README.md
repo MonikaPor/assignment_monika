@@ -1,16 +1,17 @@
-# assignment_monika
+# Search Name Project
 
-A new Flutter project.
+A search name project is created in Flutter using Bloc. This project support both Android and iOS, clone the project branch
+: https://github.com/MonikaPor/assignment_monika/tree/feature/assignment
 
-## Getting Started
+## Feature
+- search page
+- test (unit test and widget test)
 
-This project is a starting point for a Flutter application.
+### Libraries & Tools Used
+- Dio
+- Flutter Bloc
+- Loading Indicator
+- Bloc Test
+- Mockito
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://user-images.githubusercontent.com/131106317/233248736-2c65b5cc-b515-4f6d-8993-aec293e320fe.png" width="18%"></img> 
